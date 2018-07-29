@@ -29,8 +29,9 @@ html, body {
     box-shadow: 0 2px 6px rgba(0,0,0,.3);
     cursor: pointer;
     display: block;
-    float: left;
-    margin-bottom: 22px;
+    float: center;
+    margin-bottom: 12px;
+    margin-right: 10px;
     text-align: center;
 }
 #goLowerFloorUI {
@@ -40,9 +41,9 @@ html, body {
     box-shadow: 0 2px 6px rgba(0,0,0,.3);
     cursor: pointer;
     display: block;
-    float: left;
-    margin-bottom: 22px;
-    margin-left: 10px;
+    float: center;
+    margin-bottom: 12px;
+    margin-right: 10px;
     text-align: center;
 }
 #currentFloorUI {
@@ -52,9 +53,9 @@ html, body {
     box-shadow: 0 2px 6px rgba(0,0,0,.3);
     cursor: pointer;
     display: block;
-    float: left;
-    margin-bottom: 22px;
-    margin-left: 10px;
+    float: center;
+    margin-bottom: 12px;
+    margin-right: 10px;
     text-align: center;
 }
 

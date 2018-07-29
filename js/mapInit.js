@@ -83,7 +83,7 @@
     currentFloorText.innerHTML = '1';
     currentFloorUI.appendChild(currentFloorText);
     
-    
+
     // Set CSS for the setCenter control border
     var goLowerFloorUI = document.createElement('div');
     goLowerFloorUI.id = 'goLowerFloorUI';
@@ -119,35 +119,6 @@
         }
     });
 }
-
-  /**
-   * Define a property to hold the current floorplan & floor number.
-   * @private 
-   * */
-   
-  
-  
-
-  /**
-   * Gets the map center.
-   * @param int floor
-   * @return {?google.maps.LatLng}
-   */
-  FloorControl.prototype.getNextFloor = function() {
-      return floorplans[++this.currentFloor];
-  };
-
-  /** XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   * Sets the map center.
-   * @param {?google.maps.LatLng} center
-   
-  FloorControl.prototype.setFloorplan = function(floorplan,map) {
-    this.cuteCatOverlay.set("url", this.floorplans_[0]);
-    this.cuteCatOverlay.setMap(map);
-  };
-
-*/
-
 
 
   function initMap() {
@@ -284,7 +255,7 @@
 
       FloorControlDiv.index = 2;
       FloorControlDiv.style['padding-top'] = '20px';
-      map.controls[google.maps.ControlPosition.TOP_CENTER].push(FloorControlDiv);
+      map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(FloorControlDiv);
 
-      
+      alert(FloorControl.currentFloor);
   }
