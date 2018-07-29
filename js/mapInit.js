@@ -8,16 +8,24 @@ var chicago = {
     lng: -83.7164
 };
 
-var imageBounds = {
-    north: 42.29335544,
-    south: 42.2926579,
-    east: -83.71573536,
-    west: -83.71662678
-};
 
+/*
+    1ne 42.29314155, -83.71565436
+    1sw 42.29257419, -83.71667291
+
+    2ne 42.29334549, -83.71572972
+    2sw 42.29265992, -83.71662974
+
+    3ne 42.29335544, -83.71573536
+    3sw 42.2926579, -83.71662678
+
+    4ne 42.29335509, -83.71572271
+    4sw 42.29265825, -83.7166287
+
+*/
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function FloorControl(controlDiv, map, cuteCatOverlay, floorplans) {
+function FloorControl(controlDiv, map, cuteCatOverlay, floorplans, imageBounds) {
     // We set up a variable for this since we're adding event listeners
     // later.
     var control = this;
@@ -32,7 +40,7 @@ function FloorControl(controlDiv, map, cuteCatOverlay, floorplans) {
 */
     cuteCatOverlay = new google.maps.GroundOverlay(
         floorplans[0],
-        imageBounds);
+        imageBounds[0]);
     cuteCatOverlay.setMap(map);
 
 
@@ -79,10 +87,13 @@ function FloorControl(controlDiv, map, cuteCatOverlay, floorplans) {
     // to the current center of the control.
     goUpperFloorUI.addEventListener('click', function() {
         if(currentFloor < floorplans.length - 1 ){
-            cuteCatOverlay.set("url",floorplans[++currentFloor]);
+            cuteCatOverlay.setMap(null);
+            cuteCatOverlay = new google.maps.GroundOverlay(
+                floorplans[++currentFloor],
+                imageBounds[currentFloor]);
             cuteCatOverlay.setMap(map);
             currentFloorText.innerHTML = currentFloor + 1;
-            currentFloorUI.appendChild(currentFloorText)
+            currentFloorUI.appendChild(currentFloorText);
         }
     });
 
@@ -90,10 +101,13 @@ function FloorControl(controlDiv, map, cuteCatOverlay, floorplans) {
     // the control to the current center of the map.
     goLowerFloorUI.addEventListener('click', function() {
         if(currentFloor > 0 ){
-            cuteCatOverlay.set("url",floorplans[--currentFloor]);
+            cuteCatOverlay.setMap(null);
+            cuteCatOverlay = new google.maps.GroundOverlay(
+                floorplans[--currentFloor],
+                imageBounds[currentFloor]);
             cuteCatOverlay.setMap(map);
             currentFloorText.innerHTML = currentFloor + 1;
-            currentFloorUI.appendChild(currentFloorText)
+            currentFloorUI.appendChild(currentFloorText);
         }
     });
 }
@@ -234,21 +248,42 @@ function initMap() {
                 'https://i.imgur.com/gdWIxn2.jpg'];
 
     var bbb_floorplans = ["res/BBB_floorplan_1.png", "res/BBB_floorplan_2.png", "res/BBB_floorplan_3.png", "res/BBB_floorplan_4.png"];
-    //var bbb_floorplans_bounds = [];
-    //bbb_floorplans_bounds[0] =  LatLngBounds[LatLng(42.29257419, -83.71667291) , LatLng(42.29314155, -83.71565436)] ;
-
-    /*
-        1: 42.29314155, -83.71565436 --> 42.29257419, -83.71667291
-        2: 42.29334549, -83.71572972  --> 42.29265992, -83.71662974
-        3: 42.29335544, -83.71573536  -> 42.2926579, -83.71662678
-        4: 42.29335509, -83.71572271  -> 42.29265825, -83.71662868
-    */
+    
+    var imageBounds = [
+        {
+            north: 42.29314155,
+            south: 42.29257419,
+            east: -83.71565436,
+            west: -83.71667291
+        },
+        {
+            north: 42.29334549,
+            south: 42.29265992,
+            east: -83.71572972,
+            west: -83.71662974
+        },
+        {
+            north: 42.29335544,
+            south: 42.2926579,
+            east: -83.71573536,
+            west: -83.71662678
+        
+        },
+        {
+            north: 42.29335509,
+            south: 42.29265825,
+            east: -83.71572271,
+            west: -83.7166287
+        
+        }
+    ];
     
     var FloorControlDiv = document.createElement('div');
-    var floorControl = new FloorControl(FloorControlDiv, map, cuteCatOverlay, bbb_floorplans);
+    var floorControl = new FloorControl(FloorControlDiv, map, cuteCatOverlay, bbb_floorplans, imageBounds);
 
     FloorControlDiv.index = 2;
     FloorControlDiv.style['padding-top'] = '20px';
     map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(FloorControlDiv);
+    
 
 }
