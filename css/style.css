@@ -21,25 +21,51 @@ html, body {
 }
 
 
-#goUpperFloorUI, #goLowerFloorUI {
+
+#goUpperFloorUI {
     background-color: #fff;
     border: 2px solid #fff;
     border-radius: 3px;
     box-shadow: 0 2px 6px rgba(0,0,0,.3);
     cursor: pointer;
+    display: block;
     float: left;
     margin-bottom: 22px;
     text-align: center;
 }
-#goUpperFloorText, #goLowerFloorText {
+#goLowerFloorUI {
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    cursor: pointer;
+    display: block;
+    float: left;
+    margin-bottom: 22px;
+    margin-left: 10px;
+    text-align: center;
+}
+#currentFloorUI {
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    cursor: pointer;
+    display: block;
+    float: left;
+    margin-bottom: 22px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+#goUpperFloorText, #goLowerFloorText, #currentFloorText {
     color: rgb(25,25,25);
     font-family: Roboto,Arial,sans-serif;
     font-size: 15px;
+    display: block;
     line-height: 25px;
     padding-left: 5px;
     padding-right: 5px;
 }
 
-#setCenterUI {
-    margin-left: 12px;
-}
+
