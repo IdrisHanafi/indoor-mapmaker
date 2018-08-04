@@ -26,3 +26,4 @@ function Edge(node0, node1, edgeIndex){
         this[attributeName] = attributeValue;
     };
 }
+

@@ -9,20 +9,6 @@ var chicago = {
 };
 
 
-/*
-    1ne 42.29314155, -83.71565436
-    1sw 42.29257419, -83.71667291
-
-    2ne 42.29334549, -83.71572972
-    2sw 42.29265992, -83.71662974
-
-    3ne 42.29335544, -83.71573536
-    3sw 42.2926579, -83.71662678
-
-    4ne 42.29335509, -83.71572271
-    4sw 42.29265825, -83.7166287
-
-*/
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function FloorControl(controlDiv, map, cuteCatOverlay, floorplans, imageBounds) {
@@ -33,11 +19,6 @@ function FloorControl(controlDiv, map, cuteCatOverlay, floorplans, imageBounds) 
 
     // Set the center property upon construction
     controlDiv.style.clear = 'both';
-/*
-    myLatLng1 = new google.maps.LatLng({lat: 42.293141556,  lng: -83.7156543}); 
-    myLatLng2 = new google.maps.LatLng({lat: 42.29257419, lng: -83.71667291}); 
-    var boundie = new LatLngBounds([myLatLng1 , myLatLng1]);
-*/
     cuteCatOverlay = new google.maps.GroundOverlay(
         floorplans[0],
         imageBounds[0]);
@@ -114,242 +95,6 @@ function FloorControl(controlDiv, map, cuteCatOverlay, floorplans, imageBounds) 
 
 
 function initMap() {
-    var styledMapType = new google.maps.StyledMapType(
-        [
-            {
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#1d2c4d"
-                }
-              ]
-            },
-            {
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#8ec3b9"
-                }
-              ]
-            },
-            {
-              "elementType": "labels.text.stroke",
-              "stylers": [
-                {
-                  "color": "#1a3646"
-                }
-              ]
-            },
-            {
-              "featureType": "administrative.country",
-              "elementType": "geometry.stroke",
-              "stylers": [
-                {
-                  "color": "#4b6878"
-                }
-              ]
-            },
-            {
-              "featureType": "administrative.land_parcel",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#64779e"
-                }
-              ]
-            },
-            {
-              "featureType": "administrative.province",
-              "elementType": "geometry.stroke",
-              "stylers": [
-                {
-                  "color": "#4b6878"
-                }
-              ]
-            },
-            {
-              "featureType": "landscape.man_made",
-              "elementType": "geometry.stroke",
-              "stylers": [
-                {
-                  "color": "#334e87"
-                }
-              ]
-            },
-            {
-              "featureType": "landscape.natural",
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#023e58"
-                }
-              ]
-            },
-            {
-              "featureType": "poi",
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#283d6a"
-                }
-              ]
-            },
-            {
-              "featureType": "poi",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#6f9ba5"
-                }
-              ]
-            },
-            {
-              "featureType": "poi",
-              "elementType": "labels.text.stroke",
-              "stylers": [
-                {
-                  "color": "#1d2c4d"
-                }
-              ]
-            },
-            {
-              "featureType": "poi.park",
-              "elementType": "geometry.fill",
-              "stylers": [
-                {
-                  "color": "#023e58"
-                }
-              ]
-            },
-            {
-              "featureType": "poi.park",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#3C7680"
-                }
-              ]
-            },
-            {
-              "featureType": "road",
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#304a7d"
-                }
-              ]
-            },
-            {
-              "featureType": "road",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#98a5be"
-                }
-              ]
-            },
-            {
-              "featureType": "road",
-              "elementType": "labels.text.stroke",
-              "stylers": [
-                {
-                  "color": "#1d2c4d"
-                }
-              ]
-            },
-            {
-              "featureType": "road.highway",
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#2c6675"
-                }
-              ]
-            },
-            {
-              "featureType": "road.highway",
-              "elementType": "geometry.stroke",
-              "stylers": [
-                {
-                  "color": "#255763"
-                }
-              ]
-            },
-            {
-              "featureType": "road.highway",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#b0d5ce"
-                }
-              ]
-            },
-            {
-              "featureType": "road.highway",
-              "elementType": "labels.text.stroke",
-              "stylers": [
-                {
-                  "color": "#023e58"
-                }
-              ]
-            },
-            {
-              "featureType": "transit",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#98a5be"
-                }
-              ]
-            },
-            {
-              "featureType": "transit",
-              "elementType": "labels.text.stroke",
-              "stylers": [
-                {
-                  "color": "#1d2c4d"
-                }
-              ]
-            },
-            {
-              "featureType": "transit.line",
-              "elementType": "geometry.fill",
-              "stylers": [
-                {
-                  "color": "#283d6a"
-                }
-              ]
-            },
-            {
-              "featureType": "transit.station",
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#3a4762"
-                }
-              ]
-            },
-            {
-              "featureType": "water",
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#0e1626"
-                }
-              ]
-            },
-            {
-              "featureType": "water",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#4e6d70"
-                }
-              ]
-            }
-          ],
-        {name: 'Styled Map'}
-    );
 
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 20,
@@ -358,9 +103,7 @@ function initMap() {
             lng: -83.7164
         }
     });
-      
-    map.mapTypes.set('styled_map', styledMapType);
-    map.setMapTypeId('styled_map');
+
 
     // Create the DIV to hold the control and call the CenterControl()
     // constructor
@@ -407,6 +150,57 @@ function initMap() {
     FloorControlDiv.index = 2;
     FloorControlDiv.style['padding-top'] = '20px';
     map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(FloorControlDiv);
+
+    var cityCircle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+      map: null,
+      center: {lat: 42.292875723770415, lng: -83.71646203100681},
+      radius: .5
+    });
+
+    
+    
+}
+
+function readInGraphFromJson() {
+  var requestURL = 'res/wayfinding_graph.json';
+  var request = new XMLHttpRequest();
+  request.open('GET', requestURL);
+  request.responseType = 'json';
+  request.send();
+  
+  request.onload = function() {
+    var graph = request.response;
+    createCirclesOnMapFromJson(graph["nodes"], map);
+  }
+};
+
+function createCirclesOnMapFromJson(objson, map){
+
+  for(var i = 0; i < objson.length; i++){
+    var lat_in = objson[i].latitude;
+    var lng_in =  objson[i].longitude;
     
 
-}
+    var cityCircle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+      map: map,
+      center: {lat: lat_in, lng: lng_in},
+      radius: 2
+    });
+    
+    
+    
+  }  
+
+};
+
+readInGraphFromJson();
